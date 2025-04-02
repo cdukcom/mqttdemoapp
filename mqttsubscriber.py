@@ -76,7 +76,7 @@ def on_message(client, userdata, msg):
         print("Error al decodificar JSON:", e)
 
 # Configuración del cliente MQTT
-client = mqtt.Client()
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client.on_message = on_message
 
 # Conectar al broker y suscribirse a los tópicos
@@ -87,6 +87,6 @@ for topic in TOPICS:
 
 print(f"Conectado al broker {BROKER}:{PORT}")
 
-# Iniciar el loop para recibir mensajes
+#YY Iniciar el loop para recibir mensajes
 client.loop_forever()
 
