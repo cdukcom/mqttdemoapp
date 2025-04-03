@@ -3,8 +3,10 @@ import json
 from twilio.rest import Client
 
 # Configuración del broker MQTT
-BROKER = "broker.emqx.io"  # Puedes cambiarlo por el broker que estés usando
-PORT = 1883
+BROKER = "a6cc2b96.ala.us-east-1.emqxsl.com"  # Puedes cambiarlo por el broker que estés usando
+PORT = 8883
+USERNAME = "apprailway"  # Cambia por el usuario de EMQX
+PASSWORD = "faca2025"  # Cambia por la contraseña de EMQX
 TOPICS = [
     "/LCG-300-NR/0004648AQoS: 0",
     "/LCG-300-NR/0004648CQoS: 0",
@@ -78,6 +80,12 @@ def on_message(client, userdata, msg):
 # Configuración del cliente MQTT
 client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client.on_message = on_message
+
+# Activar TLS/SSL
+client.tls_set()
+
+# Agregar credenciales si las tienes
+client.username_pw_set(USERNAME, PASSWORD)
 
 # Conectar al broker y suscribirse a los tópicos
 client.connect(BROKER, PORT, 60)
