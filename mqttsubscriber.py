@@ -3,7 +3,7 @@ import json
 from twilio.rest import Client
 
 # Configuración del broker MQTT
-BROKER = "test.mosquitto.org"  # Puedes cambiarlo por el broker que estés usando
+BROKER = "broker.emqx.io"  # Puedes cambiarlo por el broker que estés usando
 PORT = 1883
 TOPICS = [
     "/LCG-300-NR/0004648AQoS: 0",
