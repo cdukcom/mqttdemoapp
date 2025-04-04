@@ -1,12 +1,21 @@
 import paho.mqtt.client as mqtt
 import json
+import os
 from twilio.rest import Client
 
 # Configuración del broker MQTT
-BROKER = "a6cc2b96.ala.us-east-1.emqxsl.com"  # Puedes cambiarlo por el broker que estés usando
-PORT = 8883
-USERNAME = "apprailway"  # Cambia por el usuario de EMQX
-PASSWORD = "faca2025"  # Cambia por la contraseña de EMQX
+BROKER = os.getenv("MQTT_BROKER")
+PORT = os.getenv("MQTT_PORT")
+USERNAME = os.getenv("MQTT_USERNAME")
+PASSWORD = os.getenv("MQTT_PASSWORD")
+
+# Configuración de Twilio
+
+TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_WHATSAPP_NUMBER = os.getenv("TWILIO_WHATSAPP_NUMBER")
+DESTINATION_NUMBER = os.getenv("DESTINATION_NUMBER")
+
 TOPICS = [
     "/LCG-300-NR/0004648AQoS: 0",
     "/LCG-300-NR/0004648CQoS: 0",
@@ -14,12 +23,6 @@ TOPICS = [
     "/LCG-300-NR/0004648A",
     "/LCG-300-NR/0004648C"
 ]
-
-# Configuración de Twilio
-TWILIO_ACCOUNT_SID = "TU_ACCOUNT_SID"
-TWILIO_AUTH_TOKEN = "TU_AUTH_TOKEN"
-TWILIO_WHATSAPP_NUMBER = "whatsapp:+14155238886"  # Número de Twilio para WhatsApp
-DESTINATION_NUMBER = "whatsapp:+573134991467"  # Número de destino
 
 client_twilio = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
