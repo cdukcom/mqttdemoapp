@@ -93,7 +93,7 @@ def send_whatsapp_message(message):
         print(f"Error al enviar mensaje: {e}")
 
 # Conectar al broker y suscribirse a los tópicos
-def on_connect(client, userdata, flags, rc):
+def on_connect(client, userdata, flags, reasonCode, properties):
     print(f"Conectado al broker {BROKER}:{PORT}")
     for topic in TOPICS:
         client.subscribe(topic)
