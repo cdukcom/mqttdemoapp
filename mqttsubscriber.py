@@ -7,7 +7,7 @@ from datetime import datetime
 # Cargar configuración desde variables de entorno
 
 # Configuración del broker MQTT
-BROKER = os.getenv("MQTT_BROKER", a6cc2b96.ala.us-east-1.emqxsl.com)
+BROKER = os.getenv("MQTT_BROKER", "a6cc2b96.ala.us-east-1.emqxsl.com")
 PORT = int(os.getenv("MQTT_PORT", 8883))
 USERNAME = os.getenv("MQTT_USERNAME")
 PASSWORD = os.getenv("MQTT_PASSWORD")
@@ -22,9 +22,7 @@ DESTINATION_NUMBER = os.getenv("DESTINATION_NUMBER")
 LOG_FILE = "mqtt_messages.log"
 
 TOPICS = [
-    "/LCG-300-NR/0004648AQoS: 0",
-    "/LCG-300-NR/0004648CQoS: 0",
-    "/LCG-300-NR/00046587QoS: 0",
+    "/LCG-300-NR/00046587",
     "/LCG-300-NR/0004648A",
     "/LCG-300-NR/0004648C"
 ]
