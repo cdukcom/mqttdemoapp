@@ -5,7 +5,7 @@ from twilio.rest import Client
 
 # Configuración del broker MQTT
 BROKER = os.getenv("MQTT_BROKER")
-PORT = os.getenv("MQTT_PORT")
+PORT = int(os.getenv("MQTT_PORT", 1883))
 USERNAME = os.getenv("MQTT_USERNAME")
 PASSWORD = os.getenv("MQTT_PASSWORD")
 
